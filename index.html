@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yaxshi qizga</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --silver: #c4ccd8;
+  --silver-dark: #8f9bad;
+  --grey: #eef1f6;
+  --grey-2: #e2e7ef;
+  --white: #ffffff;
+  --blue: #4f86d9;
+  --blue-light: #a9c7f5;
+  --blue-deep: #1f3a6e;
+  --text: #2b3550;
+  --muted: #6b7690;
+  --shadow: 0 12px 40px rgba(79, 134, 217, 0.18);
+  --radius: 22px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  color: var(--text);
+  background: linear-gradient(180deg, var(--white) 0%, var(--grey) 100%);
+  overflow-x: hidden;
+  line-height: 1.7;
+}
+
+#sparkles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---------- NAV ---------- */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 6%;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(196, 204, 216, 0.5);
+}
+
+nav .logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  color: var(--blue-deep);
+  letter-spacing: 0.5px;
+}
+
+nav ul {
+  display: flex;
+  gap: 26px;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: var(--blue);
+  transition: width 0.3s;
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* ---------- HERO ---------- */
+.hero {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 120px 6% 80px;
+  overflow: hidden;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(50px);
+  opacity: 0.55;
+  animation: float 12s ease-in-out infinite;
+}
+
+.orb.o1 {
+  width: 320px;
+  height: 320px;
+  background: var(--blue-light);
+  top: 8%;
+  left: -6%;
+}
+
+.orb.o2 {
+  width: 260px;
+  height: 260px;
+  background: var(--silver);
+  bottom: 10%;
+  right: -4%;
+  animation-delay: -4s;
+}
+
+.orb.o3 {
+  width: 180px;
+  height: 180px;
+  background: #d6e4fb;
+  top: 55%;
+  left: 18%;
+  animation-delay: -8s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.08);
+  }
+  66% {
+    transform: translate(-25px, 25px) scale(0.95);
+  }
+}
+
+.hero .tag {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 40px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--silver);
+  color: var(--blue);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: fadeDown 1s ease both;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 9vw, 6.5rem);
+  line-height: 1.1;
+  background: linear-gradient(120deg, var(--blue-deep), var(--blue), var(--silver-dark), var(--blue));
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 7s ease infinite, fadeUp 1.2s ease both;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero .typed {
+  margin-top: 22px;
+  min-height: 2.2em;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.2em;
+  background: var(--blue);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: blink 0.9s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 38px;
+  padding: 14px 34px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, var(--blue), #6fa0ea);
+  color: var(--white);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 10px 28px rgba(79, 134, 217, 0.35);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 16px 36px rgba(79, 134, 217, 0.45);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+.btn.ghost {
+  background: var(--white);
+  color: var(--blue);
+  border: 1.5px solid var(--blue-light);
+  box-shadow: none;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 44px;
+  border: 2px solid var(--silver-dark);
+  border-radius: 20px;
+}
+
+.scroll-hint::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  background: var(--blue);
+  border-radius: 4px;
+  animation: scrollDot 1.8s infinite;
+}
+
+@keyframes scrollDot {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- SECTIONS ---------- */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 100px 6%;
+  max-width: 1150px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 14px;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3rem);
+  color: var(--blue-deep);
+}
+
+.section-sub {
+  text-align: center;
+  max-width: 560px;
+  margin: 0 auto 56px;
+  color: var(--muted);
+  font-weight: 300;
+}
+
+.divider {
+  width: 70px;
+  height: 3px;
+  margin: 0 auto 18px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--silver), var(--blue), var(--silver));
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- CARDS ---------- */
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 28px;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--grey-2);
+  border-radius: var(--radius);
+  padding: 34px 28px;
+  box-shadow: var(--shadow);
+  transition: transform 0.4s, box-shadow 0.4s;
+  backdrop-filter: blur(6px);
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 22px 50px rgba(79, 134, 217, 0.28);
+}
+
+.card .icon {
+  font-size: 2.4rem;
+  margin-bottom: 14px;
+  display: inline-block;
+  animation: bob 3.5s ease-in-out infinite;
+}
+
+.card h3 {
+  font-family: 'Playfair Display', serif;
+  color: var(--blue-deep);
+  margin-bottom: 8px;
+  font-size: 1.35rem;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+@keyframes bob {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ---------- FLIP CARDS ---------- */
+.flip-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+.flip {
+  perspective: 900px;
+  height: 210px;
+  cursor: pointer;
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip.open .flip-inner {
+  transform: rotateY(180deg);
+}
+
+.face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  border-radius: var(--radius);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.face.front {
+  background: linear-gradient(145deg, var(--white), var(--grey));
+  border: 1px solid var(--silver);
+  box-shadow: var(--shadow);
+}
+
+.face.front span {
+  font-size: 2.6rem;
+}
+
+.face.front b {
+  margin-top: 8px;
+  color: var(--blue-deep);
+  font-weight: 500;
+}
+
+.face.back {
+  background: linear-gradient(145deg, var(--blue), #7aa8ee);
+  color: var(--white);
+  transform: rotateY(180deg);
+  font-size: 0.95rem;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- MAGIC BOX ---------- */
+.magic {
+  text-align: center;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(226, 231, 239, 0.7));
+  border: 1px solid var(--silver);
+  border-radius: 30px;
+  padding: 60px 30px;
+  box-shadow: var(--shadow);
+}
+
+.compliment {
+  min-height: 90px;
+  margin: 26px auto 8px;
+  max-width: 620px;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--blue-deep);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.compliment.swap {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.counter {
+  color: var(--silver-dark);
+  font-size: 0.85rem;
+}
+
+/* ---------- TIMELINE ---------- */
+.timeline {
+  position: relative;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  margin-left: -1.5px;
+  background: linear-gradient(180deg, var(--blue-light), var(--silver));
+  border-radius: 3px;
+}
+
+.t-item {
+  position: relative;
+  width: 50%;
+  padding: 0 40px 50px 0;
+  text-align: right;
+}
+
+.t-item:nth-child(even) {
+  left: 50%;
+  padding: 0 0 50px 40px;
+  text-align: left;
+}
+
+.t-item::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: -9px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--white);
+  border: 4px solid var(--blue);
+  box-shadow: 0 0 0 6px rgba(79, 134, 217, 0.15);
+}
+
+.t-item:nth-child(even)::after {
+  right: auto;
+  left: -9px;
+}
+
+.t-item h4 {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.t-item p {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+
+/* ---------- QUESTION ---------- */
+.question {
+  text-align: center;
+  background: linear-gradient(145deg, var(--blue-deep), #34568f);
+  color: var(--white);
+  border-radius: 30px;
+  padding: 70px 30px;
+  box-shadow: 0 24px 60px rgba(31, 58, 110, 0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+.question::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(169, 199, 245, 0.45), transparent 70%);
+}
+
+.question h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  margin-bottom: 14px;
+}
+
+.question p {
+  color: var(--blue-light);
+  max-width: 520px;
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.reply {
+  margin-top: 30px;
+  min-height: 60px;
+  font-size: 1.15rem;
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: all 0.7s;
+}
+
+.reply.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- FOOTER ---------- */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 60px 6% 50px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+footer .heart {
+  display: inline-block;
+  color: var(--blue);
+  animation: beat 1.6s infinite;
+}
+
+@keyframes beat {
+  0%, 100% {
+    transform: scale(1);
+  }
+  15% {
+    transform: scale(1.3);
+  }
+  30% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.2);
+  }
+}
+
+/* ---------- POPUP STAR ---------- */
+.pop {
+  position: fixed;
+  z-index: 100;
+  pointer-events: none;
+  font-size: 1.4rem;
+  animation: popUp 1.2s ease-out forwards;
+}
+
+@keyframes popUp {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-90px) scale(1.4) rotate(25deg);
+  }
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 720px) {
+  nav ul {
+    display: none;
+  }
+
+  section {
+    padding: 70px 6%;
+  }
+
+  .timeline::before {
+    left: 14px;
+  }
+
+  .t-item,
+  .t-item:nth-child(even) {
+    width: 100%;
+    left: 0;
+    padding: 0 0 40px 46px;
+    text-align: left;
+  }
+
+  .t-item::after,
+  .t-item:nth-child(even)::after {
+    left: 5px;
+    right: auto;
+  }
+
+  .flip {
+    height: 190px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ========== QORA-KO'K TUNGI MAVZU ========== */
+:root {
+  --text: #dbe6ff;
+  --muted: #9fb2d9;
+  --blue-deep: #eaf1ff;
+  --grey-2: rgba(79, 134, 217, 0.28);
+  --silver: rgba(79, 134, 217, 0.45);
+  --shadow: 0 12px 40px rgba(0, 20, 90, 0.55);
+}
+
+body {
+  background: linear-gradient(160deg, #000000 0%, #05091a 40%, #0a1a4a 100%);
+  background-attachment: fixed;
+}
+
+nav {
+  background: rgba(3, 6, 20, 0.72);
+  border-bottom: 1px solid rgba(79, 134, 217, 0.25);
+}
+
+.orb {
+  filter: blur(70px);
+  opacity: 0.6;
+}
+
+.orb.o1 {
+  background: #1e4fd8;
+}
+
+.orb.o2 {
+  background: #0b2a8a;
+}
+
+.orb.o3 {
+  background: #4f86d9;
+  opacity: 0.35;
+}
+
+.hero .tag {
+  background: rgba(10, 26, 74, 0.6);
+  border-color: rgba(79, 134, 217, 0.45);
+  color: #8fb4ff;
+}
+
+.hero h1 {
+  background-image: linear-gradient(120deg, #ffffff, #7aa8ee, #4f86d9, #ffffff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.scroll-hint {
+  border-color: #4f86d9;
+}
+
+.card {
+  background: rgba(10, 20, 55, 0.6);
+  border: 1px solid rgba(79, 134, 217, 0.25);
+}
+
+.card:hover {
+  box-shadow: 0 22px 50px rgba(30, 79, 216, 0.4);
+}
+
+.face.front {
+  background: linear-gradient(145deg, #0a1433, #0d1f55);
+  border: 1px solid rgba(79, 134, 217, 0.4);
+}
+
+.face.back {
+  background: linear-gradient(145deg, #1e4fd8, #4f86d9);
+}
+
+.magic {
+  background: linear-gradient(145deg, rgba(10, 20, 55, 0.85), rgba(3, 6, 20, 0.85));
+  border: 1px solid rgba(79, 134, 217, 0.35);
+}
+
+.counter {
+  color: #7f93bd;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: #8fb4ff;
+  border: 1.5px solid #4f86d9;
+}
+
+.t-item::after {
+  background: #05091a;
+}
+
+.t-item h4 {
+  color: #7aa8ee;
+}
+
+.question {
+  background: linear-gradient(145deg, #0a1a4a, #1e4fd8);
+  box-shadow: 0 24px 60px rgba(30, 79, 216, 0.35);
+}
+</style>
+</head>
+<body>
+
+<canvas id="sparkles"></canvas>
+
+<nav>
+  <div class="logo">✦ Yaxshi qizga</div>
+  <ul>
+    <li><a href="#sozlar">So'zlar</a></li>
+    <li><a href="#fazilat">Fazilatlar</a></li>
+    <li><a href="#sehr">Sehrli quti</a></li>
+    <li><a href="#yol">Yo'l</a></li>
+    <li><a href="#savol">Savol</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="bosh">
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="orb o3"></div>
+  <span class="tag">kichik sovg'a</span>
+  <h1>Yaxshi qizga</h1>
+  <p class="typed"><span id="typed"></span><span class="caret"></span></p>
+  <a href="#sozlar" class="btn">Davom etamiz ✦</a>
+  <div class="scroll-hint"></div>
+</header>
+
+<!-- ========== SO'ZLAR ========== -->
+<section id="sozlar">
+  <div class="reveal">
+    <div class="divider"></div>
+    <h2 class="section-title">Senga bir necha iliq so'z</h2>
+    <p class="section-sub">Yaqinda tanishdik, lekin ba'zi insonlar birinchi suhbatdayoq yaxshi taassurot qoldiradi.</p>
+  </div>
+  <div class="grid3">
+    <div class="card reveal">
+      <div class="icon">❄️</div>
+      <h3>Sokin nur</h3>
+      <p>Sen bilan suhbatda ichki xotirjamlik bor. Kumushdek tinch, qor kabi toza.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">💎</div>
+      <h3>Qadrli inson</h3>
+      <p>Insonni baholaydigan narsa so'zlari emas, odobi va e'tiboridir. Sendan shuni ko'rdim.</p>
+    </div>
+    <div class="card reveal">
+      <div class="icon">🌊</div>
+      <h3>Samimiylik</h3>
+      <p>Ko'k dengizdek chuqur va samimiy bo'lish har kimga nasib etmaydi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FAZILATLAR ========== -->
+<section id="fazilat">
+  <div class="reveal">
+    <div class="divider"></div>
+    <h2 class="section-title">Senda yoqqan narsalar</h2>
+    <p class="section-sub">Kartochkalarni bosib, orqasini ochib ko'r.</p>
+  </div>
+  <div class="flip-grid">
+    <div class="flip reveal"><div class="flip-inner">
+      <div class="face front"><span>🌙</span><b>Muloyimlik</b></div>
+      <div class="face back">Gapirish uslubing yumshoq va hurmatli. Bu juda kam uchraydi.</div>
+    </div></div>
+    <div class="flip reveal"><div class="flip-inner">
+      <div class="face front"><span>✨</span><b>Tabassum</b></div>
+      <div class="face back">Kulgi atrofdagilarning kayfiyatini ham yoritadi.</div>
+    </div></div>
+    <div class="flip reveal"><div class="flip-inner">
+      <div class="face front"><span>📖</span><b>Aql</b></div>
+      <div class="face back">Fikrlaring o'ylangan va mazmunli. Suhbatlashish qiziq.</div>
+    </div></div>
+    <div class="flip reveal"><div class="flip-inner">
+      <div class="face front"><span>🕊️</span><b>Odob</b></div>
+      <div class="face back">Insonga munosabating yaxshi tarbiyadan darak beradi.</div>
+    </div></div>
+    <div class="flip reveal"><div class="flip-inner">
+      <div class="face front"><span>🌸</span><b>Nafislik</b></div>
+      <div class="face back">Oddiy narsalarda ham go'zallikni ko'ra olasan.</div>
+    </div></div>
+    <div class="flip reveal"><div class="flip-inner">
+      <div class="face front"><span>🔥</span><b>Intilish</b></div>
+      <div class="face back">Maqsadlaring bor va sen ularga ishonch bilan intilasan.</div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ========== SEHRLI QUTI ========== -->
+<section id="sehr">
+  <div class="magic reveal">
+    <h2 class="section-title">Sehrli quti ✦</h2>
+    <p class="section-sub" style="margin-bottom:0">Tugmani bos, har safar yangi iliq gap chiqadi.</p>
+    <div class="compliment" id="compliment">Bosib ko'r...</div>
+    <div class="counter" id="counter">0 ta gap ochildi</div>
+    <button class="btn" id="magicBtn">Gap ochish ✨</button>
+  </div>
+</section>
+
+<!-- ========== YO'L ========== -->
+<section id="yol">
+  <div class="reveal">
+    <div class="divider"></div>
+    <h2 class="section-title">Tanishuvimiz yo'li</h2>
+    <p class="section-sub">Hammasi oddiy boshlandi. Keyin nima bo'lishini vaqt ko'rsatadi.</p>
+  </div>
+  <div class="timeline">
+    <div class="t-item reveal">
+      <h4>Birinchi uchrashuv</h4>
+      <p>Tasodifiy tanishuv, lekin yoqimli taassurot.</p>
+    </div>
+    <div class="t-item reveal">
+      <h4>Birinchi suhbat</h4>
+      <p>Gaplashish oson va qiziq ekanini angladim.</p>
+    </div>
+    <div class="t-item reveal">
+      <h4>Hozirgi kun</h4>
+      <p>Seni yaxshiroq bilishni istayman, shoshilmasdan.</p>
+    </div>
+    <div class="t-item reveal">
+      <h4>Kelajak</h4>
+      <p>Qanday bo'lsa ham, yaxshi xotira va yaxshi inson sifatida qolasan.</p>
+    </div>
+  </div>
+
+
+
+
+
+<footer>
+  <p>Yaxshi qizga, samimiyat bilan <span class="heart">♥</span></p>
+  <p style="margin-top:6px">Bu sahifa faqat sen uchun yasaldi.</p>
+</footer>
+
+<script>
+/* ============ SOZLAMALAR ============ */
+// Shu yerdan matnlarni o'zgartirish mumkin
+const CONFIG = {
+  typedLines: [
+    "Bu sahifa faqat sen uchun...",
+    "Kumush rang kabi sokin, osmon kabi toza.",
+    "Yaxshi insonlarga yaxshi so'zlar yarashadi."
+  ],
+  compliments: [
+    "Sening borligingdan kun yorug'roq bo'ladi.",
+    "Suhbatlashishning o'zi bir quvonch.",
+    "Sen o'ylagandan ham qadrliroqsan.",
+    "Kulganingda atrof yorishib ketadi.",
+    "Sendek samimiy inson kam uchraydi.",
+    "Fikrlaring menga ilhom beradi.",
+    "Odobing va muloyimliging ko'pni o'ylantiradi.",
+    "Sen bilan oddiy kun ham esda qoladigan bo'ladi.",
+    "Har doim o'zingdek qolgin, bu eng yaxshisi.",
+    "Senga hamisha omad va tinchlik tilayman."
+  ]
+};
+
+/* ============ SPARKLES (canvas) ============ */
+const canvas = document.getElementById('sparkles');
+const ctx = canvas.getContext('2d');
+let W = 0;
+let H = 0;
+let particles = [];
+const mouse = { x: -999, y: -999 };
+
+function resize() {
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resize);
+resize();
+
+const PALETTE = [
+  'rgba(255,255,255,',
+  'rgba(190,215,255,',
+  'rgba(120,170,255,',
+  'rgba(79,134,217,'
+];
+
+function makeParticle(startTop) {
+  return {
+    x: Math.random() * W,
+    y: startTop ? -10 : Math.random() * H,
+    r: Math.random() * 3 + 0.8,
+    vy: Math.random() * 0.6 + 0.2,
+    vx: (Math.random() - 0.5) * 0.3,
+    a: Math.random() * 0.6 + 0.25,
+    c: PALETTE[Math.floor(Math.random() * PALETTE.length)],
+    t: Math.random() * Math.PI * 2
+  };
+}
+
+for (let i = 0; i < 130; i++) {
+  particles.push(makeParticle(false));
+}
+
+window.addEventListener('mousemove', function (e) {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+function drawStar(p) {
+  const s = p.r * 1.6;
+  ctx.save();
+  ctx.translate(p.x, p.y);
+  ctx.rotate(p.t);
+  ctx.fillStyle = p.c + (p.a * (0.6 + 0.4 * Math.sin(p.t * 3))) + ')';
+  ctx.beginPath();
+  for (let i = 0; i < 4; i++) {
+    ctx.lineTo(0, -s * 2);
+    ctx.rotate(Math.PI / 4);
+    ctx.lineTo(0, -s * 0.5);
+    ctx.rotate(Math.PI / 4);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function animate() {
+  ctx.clearRect(0, 0, W, H);
+  ctx.shadowColor = 'rgba(120,170,255,0.9)';
+  ctx.shadowBlur = 10;
+  for (let i = 0; i < particles.length; i++) {
+    const p = particles[i];
+    p.t += 0.01;
+    p.y += p.vy;
+    p.x += p.vx + Math.sin(p.t) * 0.3;
+    const dx = p.x - mouse.x;
+    const dy = p.y - mouse.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    if (dist < 110) {
+      p.x += (dx / dist) * 1.6;
+      p.y += (dy / dist) * 1.6;
+    }
+    if (p.y > H + 10 || p.x < -20 || p.x > W + 20) {
+      particles[i] = makeParticle(true);
+    }
+    if (p.r > 2.2) {
+      drawStar(p);
+    } else {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.c + (p.a * (0.6 + 0.4 * Math.sin(p.t * 3))) + ')';
+      ctx.fill();
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+/* ============ TYPING EFFECT ============ */
+const typedEl = document.getElementById('typed');
+let lineIdx = 0;
+let charIdx = 0;
+let deleting = false;
+
+function typeLoop() {
+  const line = CONFIG.typedLines[lineIdx];
+  if (!deleting) {
+    charIdx++;
+    typedEl.textContent = line.slice(0, charIdx);
+    if (charIdx === line.length) {
+      deleting = true;
+      setTimeout(typeLoop, 1800);
+      return;
+    }
+    setTimeout(typeLoop, 65);
+  } else {
+    charIdx--;
+    typedEl.textContent = line.slice(0, charIdx);
+    if (charIdx === 0) {
+      deleting = false;
+      lineIdx = (lineIdx + 1) % CONFIG.typedLines.length;
+      setTimeout(typeLoop, 500);
+      return;
+    }
+    setTimeout(typeLoop, 30);
+  }
+}
+
+setTimeout(typeLoop, 1200);
+
+/* ============ SCROLL REVEAL ============ */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(function (entries) {
+  entries.forEach(function (entry, i) {
+    if (entry.isIntersecting) {
+      setTimeout(function () {
+        entry.target.classList.add('show');
+      }, i * 90);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+revealEls.forEach(function (el) {
+  observer.observe(el);
+});
+
+/* ============ FLIP CARDS ============ */
+document.querySelectorAll('.flip').forEach(function (card) {
+  card.addEventListener('click', function () {
+    card.classList.toggle('open');
+  });
+});
+
+/* ============ MAGIC BOX ============ */
+const compEl = document.getElementById('compliment');
+const countEl = document.getElementById('counter');
+const magicBtn = document.getElementById('magicBtn');
+let compCount = 0;
+let lastIdx = -1;
+
+magicBtn.addEventListener('click', function (e) {
+  let idx;
+  do {
+    idx = Math.floor(Math.random() * CONFIG.compliments.length);
+  } while (idx === lastIdx);
+  lastIdx = idx;
+  compEl.classList.add('swap');
+  setTimeout(function () {
+    compEl.textContent = CONFIG.compliments[idx];
+    compEl.classList.remove('swap');
+  }, 380);
+  compCount++;
+  countEl.textContent = compCount + ' ta gap ochildi';
+  burst(e.clientX, e.clientY, 7);
+});
+
+/* ============ POP STARS ============ */
+function burst(x, y, n) {
+  const icons = ['✦', '✧', '❄', '✨', '💙'];
+  for (let i = 0; i < n; i++) {
+    const s = document.createElement('span');
+    s.className = 'pop';
+    s.textContent = icons[Math.floor(Math.random() * icons.length)];
+    s.style.left = (x + (Math.random() - 0.5) * 120) + 'px';
+    s.style.top = (y + (Math.random() - 0.5) * 40) + 'px';
+    s.style.color = i % 2 ? '#7aa8ee' : '#ffffff';
+    document.body.appendChild(s);
+    setTimeout(function () {
+      s.remove();
+    }, 1250);
+  }
+}
+
+
+
+
+
+/* ============ SMOOTH NAV HIGHLIGHT ============ */
+const navLinks = document.querySelectorAll('nav a');
+window.addEventListener('scroll', function () {
+  let current = '';
+  document.querySelectorAll('section').forEach(function (sec) {
+    if (window.scrollY >= sec.offsetTop - 200) {
+      current = sec.id;
+    }
+  });
+  navLinks.forEach(function (a) {
+    a.style.color = a.getAttribute('href') === '#' + current ? '#4f86d9' : '';
+  });
+});
+</script>
+</body>
+</html>
